@@ -1,9 +1,0 @@
-[submodule "Login_RoomDB_Implimentation"]
-	path = Login_RoomDB_Implimentation
-	url = https://github.com/euzono/Login_RoomDB_Implimentation
-[submodule "PROG7311-PART-2-REPO"]
-	path = PROG7311-PART-2-REPO
-	url = https://github.com/UR91K/PROG7311-PART-2-REPO.git
-[submodule "PROG7313-POE-PART-1"]
-	path = PROG7313-POE-PART-1
-	url = https://github.com/UR91K/PROG7313.git
