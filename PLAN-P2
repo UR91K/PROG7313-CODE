@@ -1,6 +1,6 @@
 # Day-by-day plan
 
-## Day 1 - Full Skeleton
+## day 1: Full Skeleton
 
 Get this merged to main before your teammates touch anything.
 
@@ -12,26 +12,24 @@ Get this merged to main before your teammates touch anything.
 - README with project structure explained
 - Assign feature branches to teammates: `feature/expenses` and `feature/categories-goals`
 
-Use Claude/Copilot aggressively here - especially for the RoomDB boilerplate, it's very repetitive.
-
 ---
 
-## Days 2–4 - Parallel Feature Work
+## Parallel Feature Work day 2-4
 
-### Teammate 1 - `feature/expenses`
+### : branch `feature/expenses`
 
 - Expense entry form (date picker, start/end time, description, category dropdown, amount)
 - Optional photo attachment (camera/gallery intent)
 - Expense list view with period filter
 - Photo accessible from list
 
-### Teammate 2 - `feature/categories-goals`
+### : `feature/categories-goals`
 
 - Category creation and list screen
 - Min/max monthly goal setting (SeekBar fits well here)
 - Total spent per category view with period selector
 
-### You - reviewing PRs + integration
+### jude: reviewing PRs + integration
 
 - Keep main stable, review and merge PRs as they come in
 - Handle anything that cuts across both features (e.g. shared ViewModels, the User session)
@@ -39,7 +37,7 @@ Use Claude/Copilot aggressively here - especially for the RoomDB boilerplate, it
 
 ---
 
-## Day 5 - Integration + Polish
+## Integration + Polish day 4
 
 - Both features merged to main
 - Fix integration bugs (category list not populating in expense form, etc.)
@@ -48,7 +46,7 @@ Use Claude/Copilot aggressively here - especially for the RoomDB boilerplate, it
 
 ---
 
-## Day 6 - Video + Submission
+## Video + Submission day 4
 
 - Record demo video with voiceover, cover every requirement from the brief
 - Build the APK
