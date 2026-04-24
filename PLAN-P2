@@ -1,0 +1,56 @@
+# Day-by-day plan
+
+## Day 1 - Full Skeleton
+
+Get this merged to main before your teammates touch anything.
+
+- New Android project, Kotlin, ViewBinding enabled
+- RoomDB setup - all entities (`User`, `Category`, `Expense`), DAOs, and the database class with stub data
+- All navigation graph wired up with empty/stub fragments
+- Login screen functional (basic auth against RoomDB)
+- GitHub Actions CI workflow (use the links from the brief)
+- README with project structure explained
+- Assign feature branches to teammates: `feature/expenses` and `feature/categories-goals`
+
+Use Claude/Copilot aggressively here - especially for the RoomDB boilerplate, it's very repetitive.
+
+---
+
+## Days 2–4 - Parallel Feature Work
+
+### Teammate 1 - `feature/expenses`
+
+- Expense entry form (date picker, start/end time, description, category dropdown, amount)
+- Optional photo attachment (camera/gallery intent)
+- Expense list view with period filter
+- Photo accessible from list
+
+### Teammate 2 - `feature/categories-goals`
+
+- Category creation and list screen
+- Min/max monthly goal setting (SeekBar fits well here)
+- Total spent per category view with period selector
+
+### You - reviewing PRs + integration
+
+- Keep main stable, review and merge PRs as they come in
+- Handle anything that cuts across both features (e.g. shared ViewModels, the User session)
+- Write automated tests on merged functionality
+
+---
+
+## Day 5 - Integration + Polish
+
+- Both features merged to main
+- Fix integration bugs (category list not populating in expense form, etc.)
+- UI consistency pass - make it look like one app
+- Handle invalid inputs / edge cases so it doesn't crash
+
+---
+
+## Day 6 - Video + Submission
+
+- Record demo video with voiceover, cover every requirement from the brief
+- Build the APK
+- Final README update with video link
+- Tag the release on GitHub
