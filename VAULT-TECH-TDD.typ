@@ -130,7 +130,7 @@
     #v(0.4em)
     #text(size: 13pt, fill: med-gray)[High-Definition Android Prototype]
     #v(0.6em)
-    #text(size: 11pt, fill: med-gray)[Kotlin · Android · RoomDB · MVVM]
+    #text(size: 11pt, fill: med-gray)[Kotlin · Android · Compose Template · RoomDB]
     #v(3cm)
     #grid(
       columns: (1fr, 1fr, 1fr),
@@ -200,21 +200,22 @@ The following screens must be added to the original design to satisfy all requir
 
 #pagebreak()
 
-// ── SECTION 2: ARCHITECTURE ───────────────────────────────────
-= 2. Architecture Overview
+// ── SECTION 2: IMPLEMENTATION ARCHITECTURE ───────────────────
+= 2. Implementation Architecture
 
-== 2.1 Design Pattern: MVVM
+== 2.1 Template-Aligned Structure (Compose + RoomDB)
 
-The app follows the Model-View-ViewModel (MVVM) pattern using Android Architecture Components -- the recommended approach for modern Android development.
+The app follows the default Android Studio template direction (Compose UI + Navigation + Activity host) while implementing all functional requirements from the assignment.
+RoomDB is mandatory for local persistence. ViewModel/Repository layers are optional implementation choices, not hard requirements in the question paper.
 
 #table(
   columns: (1fr, 1.6fr, 2fr),
   inset: (x: 8pt, y: 6pt),
   stroke: 0.5pt + rgb("#DDDDDD"),
   th[Layer], th[Components], th[Responsibility],
-  td[*View*], td[Activities, Fragments, XML layouts], td[Display data; capture input; observe LiveData],
-  td[*ViewModel*], td[ExpenseViewModel, CategoryViewModel...], td[Hold UI state; call Repository; expose LiveData],
-  td[*Repository*], td[ExpenseRepository, CategoryRepository], td[Single source of truth; abstracts RoomDB from ViewModels],
+  td[*UI*], td[Composable screens, NavHost, Scaffold], td[Display state; capture input; trigger actions],
+  td[*State Holder (optional)*], td[ViewModel or screen-level state], td[Manage UI state and business flow],
+  td[*Data Access*], td[DAO classes and optional repositories], td[Query/update persistent data from RoomDB],
   td[*Room DB*], td[Entities, DAOs, AppDatabase], td[SQLite persistence via Room ORM],
 )
 
@@ -227,17 +228,17 @@ The app follows the Model-View-ViewModel (MVVM) pattern using Android Architectu
   #text(fill: code-text)[│   │   ├── AppDatabase.kt]\
   #text(fill: code-text)[│   │   ├── dao/       (UserDao, ExpenseDao, CategoryDao, GoalDao)]\
   #text(fill: code-text)[│   │   └── entity/    (User, Expense, Category, Goal)]\
-  #text(fill: code-gold)[│   └── repository/]\
+  #text(fill: code-gold)[│   └── repository/    (optional)]\
   #text(fill: code-gold)[├── ui/]\
-  #text(fill: code-text)[│   ├── auth/          (LoginActivity, SignUpActivity)]\
-  #text(fill: code-text)[│   ├── home/          (HomeActivity, HomeFragment)]\
-  #text(fill: code-text)[│   ├── expense/       (AddExpenseActivity, ExpenseListActivity, ExpenseDetailActivity)]\
-  #text(fill: code-text)[│   ├── category/      (ManageCategoriesActivity)]\
-  #text(fill: code-text)[│   ├── goals/         (BudgetGoalsActivity)]\
-  #text(fill: code-text)[│   ├── reports/       (CategoryTotalsActivity)]\
-  #text(fill: code-text)[│   ├── profile/       (ProfileActivity, EditProfileActivity, AchievementsActivity)]\
-  #text(fill: code-text)[│   └── notifications/ (NotificationsActivity)]\
-  #text(fill: code-gold)[└── viewmodel/]
+  #text(fill: code-text)[│   ├── auth/          (LoginScreen, SignUpScreen)]\
+  #text(fill: code-text)[│   ├── home/          (HomeScreen)]\
+  #text(fill: code-text)[│   ├── expense/       (AddExpenseScreen, ExpenseListScreen, ExpenseDetailScreen)]\
+  #text(fill: code-text)[│   ├── category/      (ManageCategoriesScreen)]\
+  #text(fill: code-text)[│   ├── goals/         (BudgetGoalsScreen)]\
+  #text(fill: code-text)[│   ├── reports/       (CategoryTotalsScreen)]\
+  #text(fill: code-text)[│   ├── profile/       (ProfileScreen, EditProfileScreen, AchievementsScreen)]\
+  #text(fill: code-text)[│   └── navigation/    (Routes, NavGraph)]\
+  #text(fill: code-gold)[└── state/             (optional ViewModels/state classes)]
 ]
 
 #pagebreak()
@@ -333,7 +334,7 @@ Key methods required per DAO:
   columns: (1.3fr, 1.5fr, 2fr),
   inset: (x: 8pt, y: 6pt),
   stroke: 0.5pt + rgb("#DDDDDD"),
-  th[Component], th[XML Widget], th[Notes],
+  th[Component], th[UI Element], th[Notes],
   ..rows.flatten()
 )
 
@@ -561,11 +562,11 @@ Create `.github/workflows/build.yml`:
 
 == 6.3 Automated Testing Requirements
 
-- *Unit tests* (`test/` folder): ViewModel logic, Repository methods, input validation utilities
+- *Unit tests* (`test/` folder): business logic, data mapping/helpers, and input validation utilities
 - *Instrumented tests* (`androidTest/`): RoomDB DAO queries using an *in-memory* database
 - Minimum coverage: `UserDao` insert/query, `ExpenseDao` period filter, validation utility functions
 - Use `@RunWith(AndroidJUnit4::class)` for all instrumented tests
-- Use MockK or Mockito for mocking LiveData and Repository in ViewModel unit tests
+- Use MockK or Mockito where mocking is needed for unit tests
 
 #pagebreak()
 

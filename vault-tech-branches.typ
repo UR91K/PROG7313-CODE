@@ -62,7 +62,7 @@
   text(fill: white, weight: "bold", size: 9pt)[Done ✓],
 
   // Rows
-  `build.gradle (app)`,        [Room, MPAndroidChart, Glide, Coroutines, ViewModel deps],  [\_\_\_\_\_\_\_\_\_\_], [],
+  `build.gradle (app)`,        [Room, Navigation Compose, Lifecycle, Coroutines, MPAndroidChart, Glide deps],  [\_\_\_\_\_\_\_\_\_\_], [],
   `AppDatabase.kt`,            [Wire all 4 entities; singleton pattern],                    [\_\_\_\_\_\_\_\_\_\_], [],
   `Entity: User.kt`,           [All fields + PK; SHA-256 note in comment],                  [\_\_\_\_\_\_\_\_\_\_], [],
   `Entity: Category.kt`,       [All fields incl. colourHex],                                [\_\_\_\_\_\_\_\_\_\_], [],
@@ -74,8 +74,8 @@
   `GoalDao.kt`,                [Stub method signatures only],                               [\_\_\_\_\_\_\_\_\_\_], [],
   `colors.xml`,                [Full brand palette from TDD Section 7],                     [\_\_\_\_\_\_\_\_\_\_], [],
   `themes.xml`,                [Material3.DayNight.NoActionBar base theme],                 [\_\_\_\_\_\_\_\_\_\_], [],
-  `AndroidManifest.xml`,       [All Activities declared + FileProvider],                    [\_\_\_\_\_\_\_\_\_\_], [],
-  `BaseActivity.kt`,           [SharedPreferences session helpers],                         [\_\_\_\_\_\_\_\_\_\_], [],
+  `AndroidManifest.xml`,       [Launcher activity + FileProvider declaration],               [\_\_\_\_\_\_\_\_\_\_], [],
+  `SessionPrefs.kt`,           [SharedPreferences session helpers],                           [\_\_\_\_\_\_\_\_\_\_], [],
 )
 
 #v(14pt)
@@ -120,48 +120,48 @@
 
   // feature/home
   `feature/home`,
-  [HomeActivity\ HomeFragment],
-  [BottomNavigationView; PieChart stub (MPAndroidChart); warning banner CardView; notification bell],
+  [HomeScreen\ DashboardRoute],
+  [Bottom navigation scaffold; PieChart stub (MPAndroidChart); warning banner; notification action],
   box(fill: rgb("#FFF8E1"), inset:(x:4pt,y:2pt), radius:3pt)[#text(size:8pt, fill:rgb("#F57F17"))[Medium]],
   [\_\_\_\_\_\_\_\_\_\_],
   [],
 
   // feature/expenses
   `feature/expenses`,
-  [AddExpenseActivity\ ExpenseListActivity\ ExpenseDetailActivity],
-  [⚠ All 4 new fields (startTime, endTime, description, photo); FileProvider camera/gallery; RecyclerView list with date filter; Glide image load],
+  [AddExpenseScreen\ ExpenseListScreen\ ExpenseDetailScreen],
+  [⚠ All 4 new fields (startTime, endTime, description, photo); FileProvider camera/gallery; list with date filter; Glide/Coil image load],
   box(fill: rgb("#FFEBEE"), inset:(x:4pt,y:2pt), radius:3pt)[#text(size:8pt, fill:rgb("#C62828"))[High]],
   [\_\_\_\_\_\_\_\_\_\_],
   [],
 
   // feature/goals
   `feature/goals`,
-  [BudgetGoalsActivity],
-  [⚠ Min + max goal fields (two EditTexts); SeekBar sync; upsert Goal entity; progress CardView],
+  [BudgetGoalsScreen],
+  [⚠ Min + max goal fields (two text inputs); SeekBar/slider sync; upsert Goal entity; progress card],
   box(fill: rgb("#E8F5E9"), inset:(x:4pt,y:2pt), radius:3pt)[#text(size:8pt, fill:rgb("#2E7D32"))[Low]],
   [\_\_\_\_\_\_\_\_\_\_],
   [],
 
   // feature/reports
   `feature/reports`,
-  [CategoryTotalsActivity],
-  [BarChart (MPAndroidChart); date-range filter; totals RecyclerView with goal indicators (green/red ProgressBar)],
+  [CategoryTotalsScreen],
+  [BarChart (MPAndroidChart); date-range filter; totals list with goal indicators (green/red progress)],
   box(fill: rgb("#FFF8E1"), inset:(x:4pt,y:2pt), radius:3pt)[#text(size:8pt, fill:rgb("#F57F17"))[Medium]],
   [\_\_\_\_\_\_\_\_\_\_],
   [],
 
   // feature/profile
   `feature/profile`,
-  [ProfileActivity\ EditProfileActivity\ AchievementsActivity],
-  [Circular profile picture; 6 achievement badges RecyclerView; level ProgressBar; sign-out clears SharedPreferences],
+  [ProfileScreen\ EditProfileScreen\ AchievementsScreen],
+  [Circular profile picture; 6 achievement badges list; level progress; sign-out clears SharedPreferences],
   box(fill: rgb("#E8F5E9"), inset:(x:4pt,y:2pt), radius:3pt)[#text(size:8pt, fill:rgb("#2E7D32"))[Low]],
   [\_\_\_\_\_\_\_\_\_\_],
   [],
 
-  // feature/viewmodels
-  `feature/viewmodels`,
-  [All ViewModels\ All Repositories],
-  [LiveData fields; Repository abstractions over DAOs; Coroutine scopes; stub implementations returning empty lists],
+  // feature/architecture
+  `feature/architecture`,
+  [State holders\ Data layer wiring],
+  [Template-aligned state management; DAO use (with optional repositories); coroutine scopes; stub implementations returning empty lists],
   box(fill: rgb("#FFEBEE"), inset:(x:4pt,y:2pt), radius:3pt)[#text(size:8pt, fill:rgb("#C62828"))[High]],
   [\_\_\_\_\_\_\_\_\_\_],
   [],
@@ -215,5 +215,5 @@
 #line(length: 100%, stroke: rgb("#E0E0E0"))
 #v(4pt)
 #text(size: 8pt, fill: rgb("#9E9E9E"))[
-  VAULT-TECH · Personal Budgeting App · Android · Kotlin · RoomDB · MVVM · TDD v1.0 · For Academic Use Only
+  VAULT-TECH · Personal Budgeting App · Android · Kotlin · Compose Template · RoomDB · TDD v1.1 · For Academic Use Only
 ]
